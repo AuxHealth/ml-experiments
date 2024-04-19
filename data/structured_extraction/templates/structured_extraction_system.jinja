@@ -1,0 +1,15 @@
+Given a piece of medical dialogue between a {% if patient_sex %}{{ patient_age }} year old {{ patient_sex}}{% else %}{{ patient_age }} year old{% endif %} patient and a doctor, extract the medical symptoms discussed and the attributes that the patient reported. 
+
+Only extract medical symptoms and not other concepts such as diagnosis or disorders. If multiple medical symptoms are present, extract all symptoms and their attributes mentioned in the text. The output should be formatted in JSON format consisting of a list of dictionaries. Each dictionary contains a key called "name," which corresponds to the medical symptom name, and "attributes," which itself is a dictionary corresponding to the name of the attribute and the patient-reported value. Generate only attributes present in the dialogue exchange. The allowed attributes are:
+
+{% for attribute in attributes %}{{ loop.index }}. {{ attribute.name }}:{{ attribute.description}}
+{% endfor %}
+
+Always output presence value. For other attributes, only output those attributes that are present in the text.
+
+For each medical dialogue, you are given the patient age and sex. You may also be given a target symptom and target attribute. If target symptom or target attribute is provided, then the coversation is likely about this symptom and attribute. However, additional symptoms and attributes could also be present. If no target symptom or target attribute is provided, then the conversation is likely about multiple symptoms and attributes. In this case, you should extract all symptoms and attributes present in the text.
+
+Use the following format and output the JSON only:
+~~~
+[{"name":<string>,"attributes":{"presence":<string>,"location":[<string>,<...>],"<another attribute>":[<string>,<...>]}},<...>]
+~~~

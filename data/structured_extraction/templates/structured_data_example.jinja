@@ -1,0 +1,13 @@
+{% if current_date%}Current Datetime: {{ current_day }}, {{ current_date }}
+{% endif %}Target symptom: {{ target_symptom }}
+Target attribute: {{ target_attribute}}
+Patient Age: {{ patient_age }}
+Patient Sex: {{ patient_sex }}
+
+Dialogue:
+```
+Doctor: {{ dr_text }}
+Patient: {{ patient_text }}
+```
+{% if previous_symptoms %}Here is a list of previously discussed symptoms, the symptoms discussed in the presented portion of the medical dialogue may be related to these symptoms although they could be new. When possible, use the symptom names from this list: {{ ', '.join(previous_symptoms) }}
+{% endif %}

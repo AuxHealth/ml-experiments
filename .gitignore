@@ -1,0 +1,15 @@
+data/kb
+data/__pycache__
+*.json
+*.jsonl
+evaluation/output
+.env
+__pycache__
+*/__pycache__/*
+*/.cache/*
+*/.ipynb_checkpoints/*
+*/.pytest_cache/*
+*/.coverage
+*/.DS_Store
+*/.vscode/*
+*/
